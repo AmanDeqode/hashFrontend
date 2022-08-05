@@ -47,8 +47,12 @@ input[type=text]:focus {
 
 #container{
 
-    height: 348px;
-    width: 39%;
-    border: 2px solid black;
-    margin: 11% 0% 0% 28%;
+    width: 87%;
+    padding: 12px 20px;
+    margin: 25px -53px 0px -59px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+    text-align: center;
+
 }
