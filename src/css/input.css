@@ -6,7 +6,7 @@
 #inputLabel{
     height: 29px;
     width: 400px;
-    margin: 22% 0% 1% 16%;
+    margin: 16% 3% 1% 11%;
     font-size: 20px;
 }
 
@@ -17,9 +17,9 @@
 }
 
 #input{
-    width: 61%;
+    width: 87%;
     padding: 12px 20px;
-    margin: 15px 70px 0px -14px;
+    margin: 25px -53px 0px -59px;
     box-sizing: border-box;
     border: 1px solid #555;
     outline: none;
@@ -41,7 +41,8 @@ input[type=text]:focus {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-    margin: 2% 0% 0% -12%;
+    margin: 2% -19% 0% -19%;
+
   }
 
 #container{
