@@ -1,22 +1,32 @@
 import { useState } from "react";
-import { getPosts } from "../services/api/posts";
+import { getHash } from "../services/api/hash";
+
+import "../css/input.css";
+import axios from "axios";
 
 function Input() {
   const [hexValue, setHexValue] = useState("");
   const [error, setError] = useState("");
 
-  const validateInput = (input) => {
-    const pattern = "[0-9a-fA-F]+";
+  const validateInput = () => {
+    const input = hexValue;
+    const hexaPattern = /^[0-9a-fA-F]+$/;
     console.log("input", input);
-    if (!input) {
+    if (input === "") {
       setError("Input field cannot be empty");
       return false;
+    } else if (!input.match(hexaPattern)) {
+      setError("Input value should be in hexadecimal form");
+      return false;
+    } else {
+      setError("");
+      return true;
     }
-    // if (!input.match(pattern)) {
-    //   setError("Input value is not an Hexadecimal Value");
-    //   return false;
-    // }
-    return true;
+  };
+
+  const getIpaddress = () => {
+    const ip = axios.get("https://api.ipify.org/?format=json");
+    return ip;
   };
 
   const handleChange = (event) => {
@@ -27,25 +37,55 @@ function Input() {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const isValidInput = validateInput(hexValue);
+    const { data } = await getIpaddress();
+    let ipAddress = data.ip;
+    console.log(ipAddress);
+
+    const isValidInput = validateInput();
+    console.log(isValidInput);
     if (isValidInput) {
-      console.log("api called");
-      const posts = await getPosts();
+      const posts = await getHash(hexValue, ipAddress);
       console.log("postData", posts);
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <div>Enter Hexadecimal Value Here:</div>
-          <input type="text" value={hexValue} onChange={handleChange} />
-        </label>
-        {error ? <div> {error}</div> : null}
-        <div>
-          <input type="submit" value="Submit" />
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+        // id="form"
+      >
+        <div id="container">
+          <label>
+            <div id="inputLabel">Enter Hexadecimal Value Here:</div>
+            <input
+              type="text"
+              value={hexValue}
+              onChange={(e) => {
+                handleChange(e);
+              }}
+              id="input"
+            />
+          </label>
+          {error ? (
+            <div id="showError">
+              <small>{error}</small>
+            </div>
+          ) : null}
+          <div>
+            <button
+              type="submit"
+              value="Submit"
+              id="submitBtn"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
+              submit
+            </button>
+          </div>
         </div>
       </form>
     </>

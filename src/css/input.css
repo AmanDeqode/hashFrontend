@@ -1,0 +1,53 @@
+#form{
+    height: 60%;
+    width: 50%;
+}
+
+#inputLabel{
+    height: 29px;
+    width: 400px;
+    margin: 22% 0% 1% 16%;
+    font-size: 20px;
+}
+
+#showError{
+    color: red;
+    margin: 1% 0% 0% 35%;
+    width: 100%;
+}
+
+#input{
+    width: 61%;
+    padding: 12px 20px;
+    margin: 15px 70px 0px -14px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+}
+
+#submitBtn{
+    padding: 6px 28px;
+    font-size: 23px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin: 2% 0% 0% -12%;
+  }
+
+#container{
+
+    height: 348px;
+    width: 39%;
+    border: 2px solid black;
+    margin: 11% 0% 0% 28%;
+}
