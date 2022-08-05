@@ -11,7 +11,7 @@ function Input() {
   const validateInput = () => {
     const input = hexValue;
     const hexaPattern = /^[0-9a-fA-F]+$/;
-    console.log("input", input);
+
     if (input === "") {
       setError("Input field cannot be empty");
       return false;
@@ -31,7 +31,7 @@ function Input() {
 
   const handleChange = (event) => {
     const { value } = event.target;
-    console.log("value", value);
+
     setHexValue(value);
     setError("");
   };
@@ -39,10 +39,9 @@ function Input() {
   const handleSubmit = async (event) => {
     const { data } = await getIpaddress();
     let ipAddress = data.ip;
-    console.log(ipAddress);
 
     const isValidInput = validateInput();
-    console.log(isValidInput);
+
     if (isValidInput) {
       const posts = await getHash(hexValue, ipAddress);
       console.log("postData", posts);
@@ -55,7 +54,6 @@ function Input() {
         onSubmit={(event) => {
           event.preventDefault();
         }}
-        // id="form"
       >
         <div id="container">
           <label>
