@@ -13,7 +13,7 @@ export const getHash = (inputHex, ipAddress) => {
 
 export const getStatus = (hex) => {
   return axiosInstance
-    .get(`/${hex}/`)
+    .get(`hash/${hex}`)
     .then((res) => {
       return res;
     })

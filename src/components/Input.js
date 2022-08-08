@@ -69,15 +69,12 @@ function Input() {
     const isValidInput = validateInput();
 
     if (isValidInput) {
-      const posts = await getHash(hexValue, ipAddress)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      toast.success("Successfully submitted", { position: "top-center" });
-      setHexValue("");
+      try {
+        const posts = await getHash(hexValue, ipAddress);
+        toast.success("Successfully submitted", { position: "top-center" });
+      } catch (error) {
+        toast.error("Something went wrong", { position: "top-center" });
+      }
     }
   };
 
@@ -92,53 +89,56 @@ function Input() {
     }
   };
   return (
-    <>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-      >
-        <div id="container">
-          <label>
-            <div id="inputLabel">Enter Hexadecimal Value Here:</div>
-            <input
-              type="text"
-              value={hexValue}
-              onChange={(e) => {
-                handleChange(e);
-              }}
-              id="input"
-            />
-          </label>
-          {error ? (
-            <div id="showError">
-              <small>{error}</small>
+    <div>
+      <div>
+        <form
+          autoComplete="off"
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
+          <div id="container">
+            <label>
+              <div id="inputLabel">Enter Hexadecimal Value Here:</div>
+              <input
+                type="text"
+                value={hexValue}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+                id="input"
+              />
+            </label>
+            {error ? (
+              <div id="showError">
+                <small>{error}</small>
+              </div>
+            ) : null}
+            <div>
+              <button
+                type="submit"
+                value="Submit"
+                id="submitBtn"
+                onClick={() => {
+                  handleSubmit();
+                }}
+              >
+                Submit
+              </button>
             </div>
-          ) : null}
-          <div>
-            <button
-              type="submit"
-              value="Submit"
-              id="submitBtn"
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
-              submit
-            </button>
           </div>
-        </div>
-      </form>
-
+        </form>
+      </div>
       <div id="statusDiv">
         <label>
-          Wanna know your status?
+          Wanna know the status of your request?
           <br />
-          Enter the hexadecimal value below
+          Enter your request hexadecimal number below
         </label>
         <div>
           <input
             type="text"
+            autoComplete="off"
             value={statusValue}
             onChange={(e) => {
               handleStatusValue(e);
@@ -157,10 +157,10 @@ function Input() {
             statusHandler();
           }}
         >
-          check status
+          Check Status
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
