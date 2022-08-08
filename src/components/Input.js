@@ -50,6 +50,9 @@ function Input() {
     }
   };
 
+  const statusHandler = () => {
+    console.log("Hello");
+  };
   return (
     <>
       <form
@@ -92,7 +95,14 @@ function Input() {
       <div id="statusDiv">
         <label>Wanna know your status?click here</label>
 
-        <button id="checkStatus">Status</button>
+        <button
+          id="checkStatus"
+          onClick={() => {
+            statusHandler();
+          }}
+        >
+          Status
+        </button>
       </div>
     </>
   );
