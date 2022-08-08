@@ -7,7 +7,8 @@
     height: 29px;
     width: 400px;
     margin: 16% 3% 1% 11%;
-    font-size: 20px;
+    font-size: 24px;
+    color: white;
 }
 
 #showError{
@@ -41,18 +42,20 @@ input[type=text]:focus {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-    margin: 2% -19% 0% -19%;
+    margin: 5% -19% 0% -19%;
 
   }
 
 #container{
 
-    width: 87%;
+    width: 39%;
     padding: 12px 20px;
-    margin: 25px -53px 0px -59px;
+    margin: 172px 1px 0px 414px;
     box-sizing: border-box;
     border: 1px solid #555;
     outline: none;
+    height: 379px;
+    background-color: black;
     text-align: center;
 
 }

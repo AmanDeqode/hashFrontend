@@ -43,7 +43,9 @@ function Input() {
     const isValidInput = validateInput();
 
     if (isValidInput) {
+      console.log("hello");
       const posts = await getHash(hexValue, ipAddress);
+      console.log(posts);
     }
   };
 
