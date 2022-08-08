@@ -10,3 +10,14 @@ export const getHash = (inputHex, ipAddress) => {
       throw new Error(error.message);
     });
 };
+
+export const getStatus = (hex) => {
+  return axiosInstance
+    .get(`/${hex}/`)
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      throw new Error(error.message);
+    });
+};

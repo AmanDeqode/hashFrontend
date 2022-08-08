@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getHash } from "../services/api/hash";
+import { getHash, getStatus } from "../services/api/hash";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../css/input.css";
@@ -83,9 +83,12 @@ function Input() {
 
   const statusHandler = async () => {
     const isValidInput = validateStatusInput();
+    const hex = statusValue;
+    console.log(hex);
 
     if (isValidInput) {
-      console.log("hello");
+      const hexPost = await getStatus(hex);
+      console.log("hexPost", hexPost);
     }
   };
   return (
