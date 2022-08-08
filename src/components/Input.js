@@ -44,7 +44,6 @@ function Input() {
 
     if (isValidInput) {
       const posts = await getHash(hexValue, ipAddress);
-      console.log("postData", posts);
     }
   };
 
