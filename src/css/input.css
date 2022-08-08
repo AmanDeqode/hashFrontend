@@ -15,8 +15,9 @@
 
 #showError{
     color: red;
-    margin: 1% 0% 0% 35%;
+    margin: 1% 0% 0% 6%;
     width: 100%;
+    text-align: start;
 }
 
 #input{
@@ -53,14 +54,13 @@ input[type=text]:focus {
 
     width: 39%;
     padding: 12px 20px;
-    margin: 172px 1px 0px 414px;
+    margin: 122px 1px 0px 414px;
     box-sizing: border-box;
     border: 1px solid #555;
     outline: none;
     height: 379px;
     background-color: black;
     text-align: center;
-
 }
 
 #checkStatus{
@@ -68,11 +68,41 @@ input[type=text]:focus {
     background-color: #000!important;
     border-radius: 16px;
     margin: 0% 0% 0% 1%;
-    height: 27px;
-    width: 58px;
+    width: 95px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 900;
 }
 #statusDiv{
     margin: 1% 0% 0% 10%;
     height: 30%;
     width: 80%;
+   
 }
+
+#statusInput{
+    width: 35%;
+    padding: 12px 20px;
+    margin: 25px -53px 7px -59px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+    text-align: center;
+}
+#statusInput[type=text]:focus {
+    background-color: lightblue;
+  }
+  
+  #statusError{
+    color: red;
+    margin: 21% 0% 0% 50%;
+    width: 100%;
+  }
+
+  #statusErrContainer{
+    height: 20px;
+    width: 64%;
+    text-align: start;
+    margin: -2% 0% 0% 0%;
+  }
