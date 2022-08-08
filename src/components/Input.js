@@ -88,6 +88,12 @@ function Input() {
           </div>
         </div>
       </form>
+
+      <div id="statusDiv">
+        <label>Wanna know your status?click here</label>
+
+        <button id="checkStatus">Status</button>
+      </div>
     </>
   );
 }

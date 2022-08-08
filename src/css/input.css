@@ -1,3 +1,5 @@
+
+
 #form{
     height: 60%;
     width: 50%;
@@ -59,4 +61,18 @@ input[type=text]:focus {
     background-color: black;
     text-align: center;
 
+}
+
+#checkStatus{
+    color: #fff!important;
+    background-color: #000!important;
+    border-radius: 16px;
+    margin: 0% 0% 0% 1%;
+    height: 27px;
+    width: 58px;
+}
+#statusDiv{
+    margin: 1% 0% 0% 10%;
+    height: 30%;
+    width: 80%;
 }
