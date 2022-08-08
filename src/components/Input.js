@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getHash } from "../services/api/hash";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../css/input.css";
 import axios from "axios";
 
@@ -43,9 +44,9 @@ function Input() {
     const isValidInput = validateInput();
 
     if (isValidInput) {
-      console.log("hello");
       const posts = await getHash(hexValue, ipAddress);
-      console.log(posts);
+      toast.success("Successfully submitted", { position: "top-center" });
+      setHexValue("");
     }
   };
 
