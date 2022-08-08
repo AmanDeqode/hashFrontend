@@ -24,6 +24,7 @@
     box-sizing: border-box;
     border: 1px solid #555;
     outline: none;
+    text-align: center;
 }
 
 input[type=text]:focus {
