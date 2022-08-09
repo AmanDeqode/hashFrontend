@@ -2,7 +2,6 @@ import { useState } from "react";
 import { getHash, getStatus } from "../services/api/hash";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../css/input.css";
 import axios from "axios";
 
 function Input() {
@@ -10,6 +9,7 @@ function Input() {
   const [error, setError] = useState("");
   const [statusValue, setStatusValue] = useState("");
   const [statusError, setStatusError] = useState("");
+  const [statusChecked, setStatusChecked] = useState(false);
 
   const validateInput = () => {
     const input = hexValue;
@@ -60,6 +60,7 @@ function Input() {
 
     setStatusValue(value);
     setStatusError("");
+    setHexValue("");
   };
 
   const handleSubmit = async (event) => {
@@ -70,7 +71,8 @@ function Input() {
 
     if (isValidInput) {
       try {
-        const posts = await getHash(hexValue, ipAddress);
+        const hashData = await getHash(hexValue, ipAddress);
+        console.log("hashData", hashData);
         toast.success("Successfully submitted", { position: "top-center" });
       } catch (error) {
         toast.error("Something went wrong", { position: "top-center" });
@@ -81,11 +83,37 @@ function Input() {
   const statusHandler = async () => {
     const isValidInput = validateStatusInput();
     const hex = statusValue;
-    console.log(hex);
 
     if (isValidInput) {
-      const hexPost = await getStatus(hex);
-      console.log("hexPost", hexPost);
+      try {
+        const hexPost = await getStatus(hex);
+        console.log(hexPost.data[0].status, "show");
+
+        if (hexPost.data.length === 0) {
+          toast.warn("No record found", {
+            position: "top-center",
+          });
+        } else if (hexPost.data[hexPost.data.length - 1].status === "pending") {
+          toast.info("Your request status has been in pending state", {
+            position: "top-center",
+          });
+        } else {
+          setStatusChecked(true);
+          setStatusError(
+            `Your status is ${
+              hexPost.data[hexPost.data.length - 1].status
+            }!! with the resulting nonce = ${
+              hexPost.data[hexPost.data.length - 1].nonce
+            }`
+          );
+          setHexValue("");
+        }
+
+        console.log(hexPost);
+      } catch {
+        toast.error("Something went wrong", { position: "top-center" });
+      }
+      console.log("hexPost", hex);
     }
   };
   return (
@@ -159,7 +187,12 @@ function Input() {
         </div>
 
         <div id="statusErrContainer">
-          <small className="text-red-500" id="statusError">
+          <small
+            className={
+              statusChecked ? "text-green-600 text-base" : "text-red-500"
+            }
+            id="statusError"
+          >
             {statusError}
           </small>
         </div>
