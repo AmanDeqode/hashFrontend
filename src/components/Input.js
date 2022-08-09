@@ -90,7 +90,7 @@ function Input() {
   };
   return (
     <div>
-      <div>
+      <div className="mt-[48px] mb-[80px]">
         <form
           autoComplete="off"
           onSubmit={(event) => {
@@ -99,10 +99,14 @@ function Input() {
         >
           <div id="container">
             <label>
-              <div id="inputLabel">Enter Hexadecimal Value Here:</div>
+              <div className="font-[600] text-[20px]" id="inputLabel">
+                Enter hexadecimal value here:
+              </div>
               <input
+                className="md:w-[350px] h-[40px] rounded-lg px-[16px] mt-[32px]"
                 type="text"
                 value={hexValue}
+                placeholder="Enter value here..."
                 onChange={(e) => {
                   handleChange(e);
                 }}
@@ -111,11 +115,12 @@ function Input() {
             </label>
             {error ? (
               <div id="showError">
-                <small>{error}</small>
+                <small className="text-red-500">{error}</small>
               </div>
             ) : null}
             <div>
               <button
+                className="py-2 w-[160px] bg-[#2F2DB3] font-[500] text-[16px] text-[#FFFFFF] mt-[24px] rounded-full"
                 type="submit"
                 value="Submit"
                 id="submitBtn"
@@ -129,29 +134,37 @@ function Input() {
           </div>
         </form>
       </div>
-      <div id="statusDiv">
-        <label>
+
+      <div className="mt-[80px] mb-[48px]" id="statusDiv">
+        <label className="font-[600] text-[20px]">
           Wanna know the status of your request?
-          <br />
+        </label>
+        <br />
+        <label className="text-[#4A4A4A] text-[16px]">
           Enter your request hexadecimal number below
         </label>
+
         <div>
           <input
+            className="md:w-[350px] h-[40px] rounded-lg px-[16px] mt-[32px]"
             type="text"
             autoComplete="off"
             value={statusValue}
+            placeholder="Enter value here..."
             onChange={(e) => {
               handleStatusValue(e);
             }}
             id="statusInput"
           />
         </div>
-        <br />
+
         <div id="statusErrContainer">
-          <small id="statusError">{statusError}</small>
+          <small className="text-red-500" id="statusError">
+            {statusError}
+          </small>
         </div>
-        <br />
         <button
+          className="py-2 w-[160px] bg-[#090417] font-[500] text-[16px] text-[#FFFFFF] mt-[24px] rounded-full"
           id="checkStatus"
           onClick={() => {
             statusHandler();

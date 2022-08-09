@@ -5,8 +5,8 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div className="App">
-      <div className="m-0 p-0 h-screen w-screen bg-[#CEE5D0] flex items-center justify-center">
-        <div className="h-[60%] w-[85%] md:w-[40%] flex  items-center justify-center border-2 border-[#FFFFFF] rounded-lg">
+      <div className="m-0 p-0 h-screen w-screen bg-hexa-image flex items-center justify-center bg-no-repeat bg-cover">
+        <div className="h-auto w-[90%] md:w-[35%] flex justify-center border-2 border-[#FFFFFF] rounded-[24px] backdrop-blur-md bg-white/30">
           <Input />
         </div>
       </div>
