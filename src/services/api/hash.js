@@ -2,7 +2,7 @@ import axiosInstance from "./axios-instance";
 
 export const getHash = (inputHex, ipAddress) => {
   return axiosInstance
-    .post("/hash/upload", { inputHex, ipAddress })
+    .post("/hash", { inputHex, ipAddress })
     .then((res) => {
       return res;
     })
@@ -13,7 +13,7 @@ export const getHash = (inputHex, ipAddress) => {
 
 export const getStatus = (hex) => {
   return axiosInstance
-    .get(`hash/${hex}`)
+    .get(`/hash/${hex}`)
     .then((res) => {
       return res;
     })
