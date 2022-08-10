@@ -70,10 +70,16 @@ function Input() {
 
     if (isValidInput) {
       try {
-        const posts = await getHash(hexValue, ipAddress);
-        toast.success("Successfully submitted", { position: "top-center" });
+        const hexadecimal = await getHash(hexValue, ipAddress);
+        if (hexadecimal && hexadecimal?.success) {
+          toast.success("Successfully submitted", { position: "top-center" });
+        }
       } catch (error) {
-        toast.error("Something went wrong", { position: "top-center" });
+        if (error?.message === "Request failed with status code 401") {
+          toast.error("Request with same IP has already processed", {
+            position: "top-center",
+          });
+        } else toast.error("Something went wrong", { position: "top-center" });
       }
     }
   };
